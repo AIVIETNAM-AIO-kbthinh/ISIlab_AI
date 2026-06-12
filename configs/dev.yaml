@@ -1,0 +1,33 @@
+# AI Lab Assistant - Development Configuration
+# Used when running services locally (not Docker)
+
+general:
+  app_name: "AI Lab Assistant"
+  env: development
+  log_level: INFO
+
+services:
+  api_gateway:
+    host: "0.0.0.0"
+    port: 8000
+
+  asr:
+    host: "localhost"
+    port: 8001
+    model_size: "base"
+    device: "cpu"
+    language: "vi"
+
+  llm:
+    host: "localhost"
+    port: 8003
+    ollama_host: "http://localhost:11434"
+    model: "qwen3:8b"
+    temperature: 0.7
+    max_tokens: 1024
+
+  tts:
+    host: "localhost"
+    port: 8002
+    engine: "edge-tts"
+    voice: "vi-VN-HoaiMyNeural"

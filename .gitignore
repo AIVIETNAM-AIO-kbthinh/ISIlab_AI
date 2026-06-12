@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.production
+
+# AI Models (large files)
+models/asr/*.bin
+models/asr/*.pt
+models/asr/*.onnx
+models/asr/*.ct2
+models/tts/*.onnx
+models/tts/*.pt
+models/embedding/*.bin
+
+# Data outputs
+data/logs/*.log
+data/logs/*.json
+data/audio_outputs/
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Misc
+*.bak
+*.tmp

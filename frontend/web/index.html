@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Lab Assistant - Trợ lý AI tiếng Việt cho phòng thí nghiệm đại học">
+    <title>AI Lab Assistant — Trợ lý Phòng Thí Nghiệm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header" id="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2.5" fill="none"/>
+                            <path d="M14 16C14 14.8954 14.8954 14 16 14H24C25.1046 14 26 14.8954 26 16V22C26 23.1046 25.1046 24 24 24H22L20 27L18 24H16C14.8954 24 14 23.1046 14 22V16Z" fill="url(#grad1)"/>
+                            <circle cx="17" cy="19" r="1.5" fill="white"/>
+                            <circle cx="23" cy="19" r="1.5" fill="white"/>
+                            <defs>
+                                <linearGradient id="grad1" x1="0" y1="0" x2="40" y2="40">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Lab Assistant</h1>
+                        <span class="subtitle">Trợ lý AI Phòng Thí Nghiệm</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="status-indicator" id="status-indicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Đang kết nối...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Area -->
+        <main class="chat-area" id="chat-area">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome message -->
+                <div class="message assistant-message welcome-message">
+                    <div class="message-avatar">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" fill="url(#msgGrad)"/>
+                            <path d="M8 10C8 9.44772 8.44772 9 9 9H15C15.5523 9 16 9.44772 16 10V14C16 14.5523 15.5523 15 15 15H13.5L12 17L10.5 15H9C8.44772 15 8 14.5523 8 14V10Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="msgGrad" x1="2" y1="2" x2="22" y2="22">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>Xin chào! 👋 Tôi là <strong>Lab Assistant</strong> — trợ lý AI dành cho phòng thí nghiệm.</p>
+                            <p>Bạn có thể hỏi tôi về:</p>
+                            <ul>
+                                <li>📋 Nội quy phòng thí nghiệm</li>
+                                <li>🔧 Hướng dẫn sử dụng thiết bị</li>
+                                <li>⚠️ Quy trình an toàn</li>
+                                <li>📅 Lịch trình và thông tin chung</li>
+                            </ul>
+                            <p>Nhập tin nhắn hoặc nhấn <strong>nút micro</strong> để nói tiếng Việt!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area" id="input-area">
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea
+                        id="message-input"
+                        placeholder="Nhập tin nhắn tiếng Việt..."
+                        rows="1"
+                        maxlength="5000"
+                        aria-label="Nhập tin nhắn"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button
+                            class="btn-voice"
+                            id="btn-voice"
+                            title="Nhấn giữ để nói (hoặc nhấn để bật/tắt ghi âm)"
+                            aria-label="Ghi âm giọng nói"
+                        >
+                            <svg class="mic-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 1C10.3431 1 9 2.34315 9 4V12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12V4C15 2.34315 13.6569 1 12 1Z" fill="currentColor"/>
+                                <path d="M5 10V12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 19V23M8 23H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <svg class="stop-icon hidden" viewBox="0 0 24 24" fill="none">
+                                <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>
+                            </svg>
+                            <div class="recording-pulse"></div>
+                        </button>
+                        <button
+                            class="btn-send"
+                            id="btn-send"
+                            title="Gửi tin nhắn"
+                            aria-label="Gửi tin nhắn"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-hint">
+                    <span id="recording-status" class="hidden">🔴 Đang ghi âm...</span>
+                    <span id="char-count" class="char-count"></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio player (hidden) -->
+    <audio id="audio-player" style="display:none"></audio>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
